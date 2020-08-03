@@ -1,12 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import Tasks from "./components/Tasks";
 import * as serviceWorker from "./serviceWorker";
+import Container from "react-bootstrap/Container";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Tasks />
+    <Container>
+      <Tasks />
+    </Container>
   </React.StrictMode>,
   document.getElementById("root")
 );

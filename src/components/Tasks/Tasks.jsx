@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import TaskForm from "../TaskForm/TaskForm";
 
 const Tasks = (props) => {
   const [tasks, setTasks] = useState([
@@ -16,26 +17,28 @@ const Tasks = (props) => {
     },
   ]);
 
-  const addTask = () => {
+  const addTask = (title) => {
     setTasks([
       ...tasks,
       {
-        id: 4,
-        title: "task4",
+        id: tasks.length + 1,
+        title: title,
       },
     ]);
   };
-
+  useEffect(() => {
+    console.log("useEffect");
+    console.log(tasks);
+  });
   return (
     <div className="TasksWrapper">
       <h1>Tasks</h1>
       <ul>
         {tasks.map((task) => (
-          <li>{task.title}</li>
+          <li key={task.id}>{task.title}</li>
         ))}
       </ul>
-
-      <button onClick={addTask}>Add Task</button>
+      <TaskForm addTask={addTask} />
     </div>
   );
 };
